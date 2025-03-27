@@ -2,9 +2,9 @@
 
 int	main( void )
 {
-	ClapTrap A("A");
+	ClapTrap A("Bob");
 	ClapTrap B;
-	B.setName("B");
+	B.setName("");
 	B.getName();
 
 	A.attack("John");

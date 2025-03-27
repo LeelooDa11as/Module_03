@@ -35,7 +35,7 @@ ClapTrap	&ClapTrap::operator=( const ClapTrap &other ) {
 		this->setEnergyPoints(other.getEnergyPoints());
 		this->setAttackDamage(other.getAttackDamage());
 	}
-	std::cout << "ClapTrap " << getName() << " assignment constructor called" << std::endl;
+	std::cout << "ClapTrap " << getName() << " assignment operator called" << std::endl;
 	std::cout << *this << std::endl;
 	return *this;
 }

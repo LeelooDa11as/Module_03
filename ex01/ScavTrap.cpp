@@ -8,10 +8,13 @@
 #define YELLOW  "\033[33m"
 
 //------------------------------- Constructors & desctructor --------------------------------------------------
-ScavTrap::ScavTrap( void ) : ClapTrap("Random dude", 100, 50, 20) {
+ScavTrap::ScavTrap( void ) : ClapTrap() {
 	std::cout << "ScavTrap " << getName() << " default constructor called" << std::endl;
+	this->setName("Random dude");
+	this->setHitPoints(100);
+	this->setEnergyPoints(50);
+	this->setAttackDamage(20);
 	std::cout << *this << std::endl;
-
 	return;
 }
 
@@ -43,8 +46,13 @@ ScavTrap::~ScavTrap( void ) {
 
 //------------------------------- Player functions ---------------------------------------------------------
 
-void			ClapTrap::attack( const std::string &target ) {
-	std::cout << RED << "ClapTrap " << getName() << RESET;
+void    ScavTrap::guardGate( void ) {
+	std::cout << "ScavTrap " << getName() << " is now behind the high gate" << std::endl;
+	return;
+}
+
+void			ScavTrap::attack( const std::string &target ) {
+	std::cout << RED << "ScavTrap " << getName() << RESET;
 	if (this->getEnergyPoints() < 1 || this->getHitPoints() < 1)
 		std::cout << " has no energy or hit points to attack" << std::endl;
 	else {
@@ -56,36 +64,10 @@ void			ClapTrap::attack( const std::string &target ) {
 
 }
 
-void ClapTrap::takeDamage(unsigned int amount) {
-    if (this->_hitPoints == 0) {
-        std::cout << RED << "ClapTrap " << getName() << " is already destroyed!" << RESET << std::endl;
-        return;
-    }
-    if (amount >= this->_hitPoints)
-       this->_hitPoints = 0;
-    else
-        this->_hitPoints -= amount;
-    std::cout << RED << "ClapTrap " << getName() << " took " << amount << " damage! Remaining HP: " << _hitPoints << RESET << std::endl;
-	std::cout << *this << std::endl;
-	return;
-}
-
-void ClapTrap::beRepaired(unsigned int amount) {
-    if (this->_energyPoints == 0) {
-        std::cout << YELLOW << "ClapTrap " << getName() << " has no energy to repair!" << RESET << std::endl;
-        return;
-    }
-    this->_hitPoints += amount;
-    this->_energyPoints--;
-    std::cout << GREEN << "ClapTrap " << getName() << " repaired itself for " << amount << " HP! Remaining Energy: " << _energyPoints << RESET << std::endl;
-	std::cout << *this << std::endl;
-	return;
-}
-
 //------------------------------- Printing the class --------------------------------------------------------
 
-std::ostream& operator<<(std::ostream& out, const ClapTrap& base) {
-    out << BOLD << CYAN << "ClapTrap " << base.getName() << RESET
+std::ostream& operator<<(std::ostream& out, const ScavTrap& base) {
+    out << BOLD << CYAN << "ScavTrap " << base.getName() << RESET
         << " | " << RED << "HP: " << base.getHitPoints() << RESET
         << " | " << GREEN << "EP: " << base.getEnergyPoints() << RESET
         << " | " << YELLOW << "ATK: " << base.getAttackDamage() << RESET;

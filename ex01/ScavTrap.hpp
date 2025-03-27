@@ -17,6 +17,7 @@ class ScavTrap : public ClapTrap
     //functions:
     
     void    guardGate( void ); //ScavTrap Have netered in Gate keeper mode
+    void    attack( const std::string &target );
 
 };
 

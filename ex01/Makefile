@@ -1,5 +1,5 @@
 NAME = scavTrap
-SRC = main.cpp SkavTrap.cpp ClapTrap.cpp
+SRC = main.cpp ScavTrap.cpp ClapTrap.cpp
 F_OBJ = obj/
 OBJ = $(addprefix $(F_OBJ), $(SRC:.cpp=.o))
 DEP = $(addprefix $(F_OBJ), $(SRC:.cpp=.d))
