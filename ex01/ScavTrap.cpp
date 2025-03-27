@@ -10,7 +10,7 @@
 //------------------------------- Constructors & desctructor --------------------------------------------------
 ScavTrap::ScavTrap( void ) : ClapTrap() {
 	std::cout << "ScavTrap " << getName() << " default constructor called" << std::endl;
-	this->setName("Random dude");
+	//this->setName("Random dude");
 	this->setHitPoints(100);
 	this->setEnergyPoints(50);
 	this->setAttackDamage(20);
@@ -18,20 +18,21 @@ ScavTrap::ScavTrap( void ) : ClapTrap() {
 	return;
 }
 
-ScavTrap::ScavTrap( std::string name ) : ClapTrap(name, 100, 50, 20) {
+ScavTrap::ScavTrap( std::string name ) : ClapTrap(name) {
 	std::cout << "ScavTrap " << getName() << " string constructor called" << std::endl;
+	this->setHitPoints(100);
+	this->setEnergyPoints(50);
+	this->setAttackDamage(20);
 	std::cout << *this << std::endl;
 	return;
 }
 
-// To test
 ScavTrap::ScavTrap( const ScavTrap &base ) : ClapTrap( base ) {
 	std::cout << "ScavTrap " << getName() << " copy constructor called" << std::endl;
 	std::cout << *this << std::endl;
 	return;
 }
 
-//To test
 ScavTrap	&ScavTrap::operator=( const ScavTrap &other ) {
 	ClapTrap::operator=(other);
 	std::cout << "ScavTrap " << getName() << " assignment constructor called" << std::endl;
