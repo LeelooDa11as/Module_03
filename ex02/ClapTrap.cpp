@@ -8,23 +8,21 @@
 #define YELLOW  "\033[33m"
 
 //------------------------------- Constructors & desctructor --------------------------------------------------
-ClapTrap::ClapTrap( void ):_name("Random dude"), _hitPoints(10), _energyPoints(10), _attackDamage(2) {
+ClapTrap::ClapTrap( void ):_name("Random dude"), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
 	std::cout << "ClapTrap " << getName() << " default constructor called" << std::endl;
 	return;
 }
 
-ClapTrap::ClapTrap( std::string name ) :_name(name), _hitPoints(10), _energyPoints(10), _attackDamage(2) {
+ClapTrap::ClapTrap( std::string name ) :_name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
 	std::cout << "ClapTrap " << getName() << " string constructor called" << std::endl;
 	return;
 }
 
-ClapTrap::ClapTrap( std::string name, int hitPoints, int energyPoints, int attackDamage ) :_name(name) {
-	std::cout << "ClapTrap " << getName() << " all constructor called" << std::endl;
-	setHitPoints(hitPoints);
-	setEnergyPoints(energyPoints);
-	setAttackDamage(attackDamage);
+ClapTrap::ClapTrap( std::string name, int hitPoints, int energyPoints, int attackDamage ) : 
+	_name(name), _hitPoints(hitPoints), _energyPoints(energyPoints), _attackDamage(attackDamage)
+{
+	std::cout << "ClapTrap " << getName() << " full constructor called" << std::endl;
 	return;
-
 }
 
 ClapTrap::ClapTrap( const ClapTrap &base ) :_name(base._name), _hitPoints(base._hitPoints), _energyPoints(base._energyPoints), _attackDamage(base._attackDamage) {

@@ -2,22 +2,20 @@
 
 int	main( void )
 {
-	//checks that attack, repair and takeDamage do not work once reached 0 points
-	std::cout << "====== Test1 ======" << std::endl;
-    ClapTrap clap1("ClapOne");
-    ClapTrap clap2;
+	ClapTrap	player1;
+	ClapTrap	player2("Bob");
+	
+	//checks attack and be repaired
+	player1.attack(player2.getName());
+	player1.attack(player2.getName());
+	player1.beRepaired(2);
+	player2.takeDamage(2);
+	player2.takeDamage(10);
+	player2.takeDamage(1);
 
-	std::cout << "======  ======" << std::endl;
-	for (int i = 0; i < 6; i++)
-	{
-		 clap1.attack(clap2.getName());
-    	clap2.takeDamage(clap1.getAttackDamage());
-	}
-
-	for (int i = 0; i < 11; i++)
-		clap1.attack(clap2.getName());
-   
-   
-	std::cout << "====== Test2 ======" << std::endl;
-	return 1;
+	ClapTrap	player3;
+	player3 = player2;
+	std::cout << player2 << std::endl;
+	std::cout << player3 << std::endl;
+	return (0);
 }

@@ -120,13 +120,17 @@ void ClapTrap::takeDamage(unsigned int amount) {
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
-    if (this->_energyPoints == 0) {
+    if (this->_energyPoints == 0)
         std::cout << YELLOW << "ClapTrap " << getName() << " has no energy to repair!" << RESET << std::endl;
-        return;
-    }
-    this->_hitPoints += amount;
-    this->_energyPoints--;
-    std::cout << GREEN << "ClapTrap " << getName() << " repaired itself for " << amount << " HP! Remaining Energy: " << _energyPoints << RESET << std::endl;
+	else if (amount > this->_energyPoints)
+		std::cout << YELLOW << "ClapTrap " << getName() << " has no energy to repair!" << RESET << std::endl;
+	else 
+	{
+		this->_hitPoints += amount;
+		this->_energyPoints -= amount;
+		std::cout << GREEN << "ClapTrap " << getName() << " repaired itself for " << amount << " HP! Remaining Energy: " << _energyPoints << RESET << std::endl;
+
+	}
 	std::cout << *this << std::endl;
 	return;
 }

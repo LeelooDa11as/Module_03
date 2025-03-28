@@ -58,7 +58,7 @@ std::string	ClapTrap::getName( void )const {
 
 void			ClapTrap::setHitPoints( unsigned int hitPoints ) {
 	this->_hitPoints = hitPoints;
-	std::cout << getName() << "'s hit points are set to " << getHitPoints() << std::endl;
+	//std::cout << getName() << "'s hit points are set to " << getHitPoints() << std::endl;
 	return;
 }
 
@@ -69,7 +69,7 @@ unsigned int	ClapTrap::getHitPoints( void )const {
 
 void			ClapTrap::setEnergyPoints( unsigned int energyPoints ) {
 	this->_energyPoints = energyPoints;
-	std::cout << "ClapTrap " << getName() << "'s energy points are set to " << getEnergyPoints() << std::endl;
+	//std::cout << "ClapTrap " << getName() << "'s energy points are set to " << getEnergyPoints() << std::endl;
 	return;
 }
 
@@ -119,13 +119,17 @@ void ClapTrap::takeDamage(unsigned int amount) {
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
-    if (this->_energyPoints == 0) {
+    if (this->_energyPoints == 0)
         std::cout << YELLOW << "ClapTrap " << getName() << " has no energy to repair!" << RESET << std::endl;
-        return;
-    }
-    this->_hitPoints += amount;
-    this->_energyPoints--;
-    std::cout << GREEN << "ClapTrap " << getName() << " repaired itself for " << amount << " HP! Remaining Energy: " << _energyPoints << RESET << std::endl;
+	else if (amount > this->_energyPoints)
+		std::cout << YELLOW << "ClapTrap " << getName() << " has no energy to repair!" << RESET << std::endl;
+	else 
+	{
+		this->_hitPoints += amount;
+		this->_energyPoints -= amount;
+		std::cout << GREEN << "ClapTrap " << getName() << " repaired itself for " << amount << " HP! Remaining Energy: " << _energyPoints << RESET << std::endl;
+
+	}
 	std::cout << *this << std::endl;
 	return;
 }
