@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kkoval <kkoval@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/28 16:42:13 by kkoval            #+#    #+#             */
+/*   Updated: 2025/03/28 16:42:16 by kkoval           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ScavTrap.hpp"
 
 #define RESET   "\033[0m"
@@ -8,21 +20,14 @@
 #define YELLOW  "\033[33m"
 
 //------------------------------- Constructors & desctructor --------------------------------------------------
-ScavTrap::ScavTrap( void ) : ClapTrap() {
+ScavTrap::ScavTrap( void ) : ClapTrap("Random dude", 100, 50, 20) {
 	std::cout << "ScavTrap " << getName() << " default constructor called" << std::endl;
-	//this->setName("Random dude");
-	this->setHitPoints(100);
-	this->setEnergyPoints(50);
-	this->setAttackDamage(20);
 	std::cout << *this << std::endl;
 	return;
 }
 
-ScavTrap::ScavTrap( std::string name ) : ClapTrap(name) {
+ScavTrap::ScavTrap( std::string name ) : ClapTrap(name, 100, 50, 20) {
 	std::cout << "ScavTrap " << getName() << " string constructor called" << std::endl;
-	this->setHitPoints(100);
-	this->setEnergyPoints(50);
-	this->setAttackDamage(20);
 	std::cout << *this << std::endl;
 	return;
 }
@@ -35,7 +40,7 @@ ScavTrap::ScavTrap( const ScavTrap &base ) : ClapTrap( base ) {
 
 ScavTrap	&ScavTrap::operator=( const ScavTrap &other ) {
 	ClapTrap::operator=(other);
-	std::cout << "ScavTrap " << getName() << " assignment constructor called" << std::endl;
+	std::cout << "ScavTrap " << getName() << " assignment operator called" << std::endl;
 	std::cout << *this << std::endl;
 	return *this;
 }

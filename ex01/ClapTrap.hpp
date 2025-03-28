@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kkoval <kkoval@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/28 16:41:49 by kkoval            #+#    #+#             */
+/*   Updated: 2025/03/28 16:41:52 by kkoval           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CLAPTRAP_HPP
 #define CLAPTRAP_HPP
 
@@ -10,7 +22,7 @@ class ClapTrap
 
 	ClapTrap( void );
 	ClapTrap( std::string name );
-	ClapTrap( std::string name, int hitPoints, int energyPoints, int attackDamage );
+	ClapTrap( std::string name, unsigned int hitPoints, unsigned int energyPoints, unsigned int attackDamage );
 	ClapTrap( const ClapTrap &base );
 	ClapTrap &operator=( const ClapTrap &other );
 	~ClapTrap( void );

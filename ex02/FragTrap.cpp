@@ -6,7 +6,7 @@
 /*   By: kkoval <kkoval@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 15:37:30 by kkoval            #+#    #+#             */
-/*   Updated: 2025/03/27 18:19:36 by kkoval           ###   ########.fr       */
+/*   Updated: 2025/03/28 15:42:38 by kkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ FragTrap::~FragTrap( void ) {
 	std::cout << "FragTrap " << getName() << " destructor called" << std::endl;
 	return;
 }
+
+//------------------------------- Player functions ---------------------------------------------------------
 
 void	FragTrap::highFiveGuys( void ) {
 	std::cout << "Hey buddy! High five for you :D" << std::endl;

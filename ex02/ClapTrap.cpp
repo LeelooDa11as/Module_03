@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kkoval <kkoval@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/28 16:42:37 by kkoval            #+#    #+#             */
+/*   Updated: 2025/03/28 16:42:39 by kkoval           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ClapTrap.hpp"
 
 #define RESET   "\033[0m"
@@ -18,7 +30,7 @@ ClapTrap::ClapTrap( std::string name ) :_name(name), _hitPoints(10), _energyPoin
 	return;
 }
 
-ClapTrap::ClapTrap( std::string name, int hitPoints, int energyPoints, int attackDamage ) : 
+ClapTrap::ClapTrap( std::string name, unsigned hitPoints, unsigned int energyPoints, unsigned int attackDamage ) : 
 	_name(name), _hitPoints(hitPoints), _energyPoints(energyPoints), _attackDamage(attackDamage)
 {
 	std::cout << "ClapTrap " << getName() << " full constructor called" << std::endl;
@@ -122,11 +134,21 @@ void ClapTrap::takeDamage(unsigned int amount) {
 void ClapTrap::beRepaired(unsigned int amount) {
     if (this->_energyPoints == 0) {
         std::cout << YELLOW << "ClapTrap " << getName() << " has no energy to repair!" << RESET << std::endl;
-        return;
-    }
-    this->_hitPoints += amount;
-    this->_energyPoints--;
-    std::cout << GREEN << "ClapTrap " << getName() << " repaired itself for " << amount << " HP! Remaining Energy: " << _energyPoints << RESET << std::endl;
+		return;
+	}
+	else if (amount > this->_energyPoints) {
+
+		std::cout << YELLOW << "ClapTrap " << getName() << " does not have enough energy points to repair!" << RESET << std::endl;
+		std::cout << *this << std::endl;
+		return;
+	}
+	else 
+	{
+		this->_hitPoints += amount;
+		this->_energyPoints -= amount;
+		std::cout << GREEN << "ClapTrap " << getName() << " repaired itself for " << amount << " HP! Remaining Energy: " << _energyPoints << RESET << std::endl;
+
+	}
 	std::cout << *this << std::endl;
 	return;
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kkoval <kkoval@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/28 16:40:28 by kkoval            #+#    #+#             */
+/*   Updated: 2025/03/28 16:40:31 by kkoval           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ClapTrap.hpp"
 
 #define RESET   "\033[0m"
@@ -119,10 +131,16 @@ void ClapTrap::takeDamage(unsigned int amount) {
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
-    if (this->_energyPoints == 0)
+    if (this->_energyPoints == 0) {
         std::cout << YELLOW << "ClapTrap " << getName() << " has no energy to repair!" << RESET << std::endl;
-	else if (amount > this->_energyPoints)
-		std::cout << YELLOW << "ClapTrap " << getName() << " has no energy to repair!" << RESET << std::endl;
+		return;
+	}
+	else if (amount > this->_energyPoints) {
+
+		std::cout << YELLOW << "ClapTrap " << getName() << " does not have enough energy points to repair!" << RESET << std::endl;
+		std::cout << *this << std::endl;
+		return;
+	}
 	else 
 	{
 		this->_hitPoints += amount;
